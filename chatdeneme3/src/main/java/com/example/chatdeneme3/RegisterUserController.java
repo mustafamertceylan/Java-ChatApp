@@ -1,10 +1,7 @@
 package com.example.chatdeneme3;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,10 +16,23 @@ public class RegisterUserController {
     private TextField UsernPassword;
 
     public static String userNickName="User";
+    private static User user;
+    public static User getRegisterUser(){
+        return user;
+    }
+
     @FXML
-    private void handleRegisterUserButton(ActionEvent event){
+    private void handleRegisterUserButton(){
+        if (Name.getText().isEmpty() || LastName.getText().isEmpty() || Username.getText().isEmpty() || UsernPassword.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Hata");
+            alert.setHeaderText(null);
+            alert.setContentText("Lütfen tüm alanları doldurun.");
+            alert.showAndWait();
+            return;
+        }
         userNickName=Username.getText();
-        User user = new User(Name.getText(),LastName.getText(),UsernPassword.getText(),Username.getText());
+        user = new User(Name.getText(),LastName.getText(),UsernPassword.getText(),Username.getText());
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Kayıt Başarılı");
         alert.setHeaderText(null);
