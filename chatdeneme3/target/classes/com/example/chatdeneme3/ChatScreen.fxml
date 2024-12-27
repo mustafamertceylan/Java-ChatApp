@@ -18,7 +18,12 @@
                <children>
                   <Button fx:id="StatusOnline" layoutX="197.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleStatusOnlineButton" text="Çevrim içi ol :)" />
                       <Label layoutX="164.0" layoutY="37.0" style="-fx-font-size: 24; -fx-font-weight: bold;" text="MarmaraChat" />
-                  <Button layoutX="385.0" layoutY="55.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-image: ;" text="Button" />
+                  <Button layoutX="342.4" layoutY="28.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-image: ;" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="28.0" />
+                  <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="410.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../java/com/example/chatdeneme3/images/profile-user.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
                 <TextArea fx:id="messageArea" editable="false" prefHeight="293.0" prefWidth="478.0" wrapText="true" />
