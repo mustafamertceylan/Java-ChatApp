@@ -17,10 +17,10 @@
                <children>
                   <ImageView fitHeight="33.0" fitWidth="105.0" layoutX="25.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../../Downloads/undefined%20-%20Imgur.jpg" />
+                        <Image url="@../../../../../../undefined%20-%20Imgur.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="59.0" layoutY="19.0" prefHeight="26.0" prefWidth="188.0" text="MarmaraChat'e Hoş Geldiniz!!!" />
+                  <Label layoutX="59.0" layoutY="19.0" prefHeight="26.0" prefWidth="188.0" text=" MarmaraChat'e Hoş Geldiniz!!!" />
                </children>
             </AnchorPane>
         <TextField fx:id="Username" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="249.0" promptText="Kullanıcı Adı" />

@@ -16,6 +16,7 @@ public class User extends Chat{
     public String getUserName() {
         return UserName;
     }
+    public String getNickName(){return nickName;}
 
     public void setUserName(String userName) {
         UserName = userName;

@@ -14,38 +14,32 @@ public class ChatScreenController {
 
     private ChatClientGUI mainApp; // Ana uygulama referansı
 
-//    @FXML
-//    private TextField kullaniciAdiGiris;
-//    @FXML
-//    private Button kullanıcıAdi;
     @FXML
     private Button StatusOnline;
-    private  Boolean isOnline=false;
+    private  Boolean isOnline=true;
+    int isOnlineCount=1;
     @FXML
     private void handleStatusOnlineButton(){
-        if(!isOnline){
-            String enteredUsername = RegisterUserController.userNickName.trim();
-            if (!enteredUsername.isEmpty()) {
-                out.println(enteredUsername);  // Kullanıcı adı sunucuya gönderiliyor
-
-                // Kullanıcı adı girildikten sonra diğer bileşenler aktif olacak
-//            kullaniciAdiGiris.setDisable(true);
-//            sendButton.setDisable(false);
-                messageField.setDisable(false);
-                messageField.setPromptText("Type a message...");  // Mesaj yazılabilir hale gelir
-            } else {
-                messageArea.appendText("Username cannot be empty.\n");
+        if(isOnline){
+            if(isOnlineCount==1){
+                out.println(RegisterUserController.userNickName);
+                isOnlineCount+=1;
             }
-            isOnline=true;
+            else{
+                out.println("CONNECTED");
+            }
+            messageField.setDisable(false);
+            sendButton.setDisable(false);
+            messageField.setPromptText("Type a message...");  // Mesaj yazılabilir hale gelir
             StatusOnline.setText("Çevrim içi");
+            isOnline = false;
         }
         else{
             out.println("DISCONNECT");
             messageField.setDisable(true);
             messageField.setPromptText("Çevrim dışı oldun...");
-
-            isOnline = false;
             StatusOnline.setText("Çevrim dışı");
+            isOnline=true;
 
         }
 
@@ -58,6 +52,7 @@ public class ChatScreenController {
     @FXML
     private TextField messageField; // Mesaj girişi için alan
 
+
     @FXML
     private Button sendButton; // Mesaj gönderme butonu
 
@@ -66,8 +61,8 @@ public class ChatScreenController {
 
     @FXML
     private void initialize() {
-        //sendButton.setDisable(true); // Başlangıçta gönderme butonunu pasifleştir
         setupConnection(); // Sunucu bağlantısını kur
+        messageField.setOnAction(event -> handleSendMessage());
     }
 
     @FXML
@@ -102,8 +97,8 @@ public class ChatScreenController {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-            sendButton.setDisable(false); // Bağlantı başarılıysa butonu aktif yap
-
+            sendButton.setDisable(true); // Bağlantı başarılıysa butonu aktif yap
+            messageField.setDisable(true);
             // Gelen mesajları dinleyen bir thread başlat
             new Thread(() -> {
                 try {

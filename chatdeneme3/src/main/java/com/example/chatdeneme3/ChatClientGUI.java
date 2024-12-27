@@ -5,9 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.PrintWriter;
+
 public class ChatClientGUI extends Application {
     private Stage primaryStage;
-
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -43,6 +44,7 @@ public class ChatClientGUI extends Application {
             controller.setMainApp(this);
 
             primaryStage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

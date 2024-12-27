@@ -7,12 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+
+
 
 public class LoginScreenController {
     private ChatClientGUI mainApp; // Ana uygulama referansı
-
     @FXML
     private TextField Username;
     @FXML
@@ -50,7 +50,7 @@ public class LoginScreenController {
             return;
         }
 
-        if (usernamefield.equals(registeredUser.getUserName()) && passwordfield.equals(registeredUser.getUserPassword())) {
+        if (usernamefield.equals(registeredUser.getNickName()) && passwordfield.equals(registeredUser.getUserPassword())) {
             try {
                 mainApp.showChatScreen(); // Başarılı giriş sonrası Chat ekranına geç
             } catch (Exception e) {
