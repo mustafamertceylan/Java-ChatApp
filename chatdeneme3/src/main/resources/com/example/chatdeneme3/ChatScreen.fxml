@@ -28,7 +28,7 @@
                   <graphic>
                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="6.0">
                         <image>
-                           <Image url="@../../../../java/com/example/chatdeneme3/images/send.png" />
+                           <Image url="@../../../images/send.png" />
                         </image>
                      </ImageView>
                   </graphic></Button>
