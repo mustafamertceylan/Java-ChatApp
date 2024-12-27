@@ -1,33 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="347.0" prefWidth="371.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatdeneme3.LoginScreenController">
+<AnchorPane prefHeight="347.0" prefWidth="373.0" styleClass="gray-background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatdeneme3.LoginScreenController">
   <children>
     <VBox alignment="CENTER" prefHeight="177.0" prefWidth="164.0" spacing="15.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="50.0">
       <children>
-            <AnchorPane prefHeight="71.0" prefWidth="282.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="33.0" fitWidth="105.0" layoutX="25.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="51.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../undefined%20-%20Imgur.jpg" />
+                        <Image url="@../../../images/fotolar/Marmara_Üniversitesi_logo.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="59.0" layoutY="19.0" prefHeight="26.0" prefWidth="188.0" text=" MarmaraChat'e Hoş Geldiniz!!!" />
+                  <Label prefHeight="26.0" prefWidth="225.0" text=" MarmaraChat'e Hoş Geldiniz!!!">
+                     <font>
+                        <Font name="Ebrima Bold" size="15.0" />
+                     </font></Label>
                </children>
+            </HBox>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
+               <children>
+              <TextField fx:id="Username" layoutX="16.0" layoutY="4.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="252.0" promptText="Kullanıcı Adı" styleClass="light-gray-background" stylesheets="@style.css" />
+               </children>
+               <styleClass>
+                  <String fx:value="light-gray-background" />
+                  <String fx:value="radius" />
+               </styleClass>
             </AnchorPane>
-        <TextField fx:id="Username" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="249.0" promptText="Kullanıcı Adı" />
-        <PasswordField fx:id="UserPasword" promptText="Şifre " />
-        <Button onAction="#handleLogin" prefHeight="14.0" prefWidth="158.0" text="Giriş Yap" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
+               <children>
+                  <TextField fx:id="UserPasword" layoutX="16.0" layoutY="4.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="252.0" promptText="Şifre" styleClass="light-gray-background" stylesheets="@style.css" />
+               </children>
+               <styleClass>
+                  <String fx:value="light-gray-background" />
+                  <String fx:value="radius" />
+               </styleClass>
+            </AnchorPane>
+        <Button onAction="#handleLogin" prefHeight="14.0" prefWidth="158.0" text="Giriş Yap" textFill="WHITE">
+               <styleClass>
+                  <String fx:value="dark-gray-background" />
+                  <String fx:value="radius" />
+               </styleClass></Button>
             <Label prefHeight="24.0" prefWidth="231.0" text="Hesabın yok mu? Hemen kaydolabilirsin!!!" />
-            <Button mnemonicParsing="false" onAction="#handleRegisterUserButton" prefHeight="26.0" prefWidth="162.0" text="Kaydol" />
+            <Button mnemonicParsing="false" onAction="#handleRegisterUserButton" prefHeight="26.0" prefWidth="162.0" text="Kaydol" textFill="WHITE">
+               <styleClass>
+                  <String fx:value="dark-gray-background" />
+                  <String fx:value="radius" />
+               </styleClass></Button>
       </children>
     </VBox>
   </children>

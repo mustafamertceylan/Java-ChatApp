@@ -20,7 +20,7 @@ public class ChatClientGUI extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/chatdeneme3/LoginScreen.fxml"));
             Scene scene = new Scene(loader.load());
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Login Screen");
+            primaryStage.setTitle("Giriş");
 
             // Controller ile ilişki kur ve ana uygulamayı bağla
             LoginScreenController controller = loader.getController();
