@@ -11,6 +11,7 @@ public class User extends Chat{
         this.UserName=UserName;
         this.UserLastName=UserLastname;
         this.UserPassword=UserPassword;
+        storeData(ID,OlusturlmaTarihi);
     }
 
     public String getUserName() {
@@ -38,5 +39,14 @@ public class User extends Chat{
         UserPassword = userPassword;
     }
 
+    public void storeUserData(String UserName,String UserLastname,String UserPassword,String nickName){
+        System.out.println("Bilgiler dosyaya kaydedildi");
 
+    }
+
+    @Override
+    public void storeData(String ID, Date date) {
+        System.out.println("Bilgiler Dosyaya kaydediliyor");
+        storeUserData(UserName,UserLastName,UserPassword,nickName);
+    }
 }

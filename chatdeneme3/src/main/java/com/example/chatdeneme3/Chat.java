@@ -9,5 +9,6 @@ abstract class Chat {
         this.ID=Id;
         this.OlusturlmaTarihi=OlusturulmaTarihi;
     }
+    abstract  void storeData(String ID,Date date);
 
 }
