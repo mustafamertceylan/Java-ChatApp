@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="347.0" prefWidth="373.0" styleClass="gray-background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatdeneme3.LoginScreenController">
+<AnchorPane prefHeight="347.0" prefWidth="373.0" styleClass="gray-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatdeneme3.LoginScreenController">
   <children>
     <VBox alignment="CENTER" prefHeight="177.0" prefWidth="164.0" spacing="15.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="50.0">
       <children>
@@ -28,18 +28,18 @@
                      </font></Label>
                </children>
             </HBox>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../style.css">
                <children>
-              <TextField fx:id="Username" layoutX="16.0" layoutY="4.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="252.0" promptText="Kullanıcı Adı" styleClass="light-gray-background" stylesheets="@style.css" />
+              <TextField fx:id="Username" layoutX="16.0" layoutY="4.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="252.0" promptText="Kullanıcı Adı" styleClass="light-gray-background" stylesheets="@../../../style.css" />
                </children>
                <styleClass>
                   <String fx:value="light-gray-background" />
                   <String fx:value="radius" />
                </styleClass>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../style.css">
                <children>
-                  <TextField fx:id="UserPasword" layoutX="16.0" layoutY="4.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="252.0" promptText="Şifre" styleClass="light-gray-background" stylesheets="@style.css" />
+                  <TextField fx:id="UserPasword" layoutX="16.0" layoutY="4.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="252.0" promptText="Şifre" styleClass="light-gray-background" stylesheets="@../../../style.css" />
                </children>
                <styleClass>
                   <String fx:value="light-gray-background" />
@@ -52,7 +52,7 @@
                   <String fx:value="radius" />
                </styleClass></Button>
             <Label prefHeight="24.0" prefWidth="231.0" text="Hesabın yok mu? Hemen kaydolabilirsin!!!" />
-            <Button mnemonicParsing="false" onAction="#handleRegisterUserButton" prefHeight="26.0" prefWidth="162.0" text="Kaydol" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#handleRegisterUserButton" prefHeight="26.0" prefWidth="162.0" stylesheets="@../../../style.css" text="Kaydol" textFill="WHITE">
                <styleClass>
                   <String fx:value="dark-gray-background" />
                   <String fx:value="radius" />

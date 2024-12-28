@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="374.0" prefWidth="364.0" styleClass="gray-background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatdeneme3.RegisterUserController">
+<AnchorPane prefHeight="374.0" prefWidth="364.0" styleClass="gray-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatdeneme3.RegisterUserController">
    <children>
       <VBox alignment="CENTER_RIGHT" layoutX="46.0" layoutY="101.0" prefHeight="171.0" prefWidth="100.0" spacing="10.0">
          <children>
@@ -58,7 +58,7 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Button fx:id="RegisterUser" layoutX="270.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleRegisterUserButton" stylesheets="@style.css" text="Kayıt ol">
+      <Button fx:id="RegisterUser" layoutX="270.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleRegisterUserButton" stylesheets="@../../../style.css" text="Kayıt ol">
          <styleClass>
             <String fx:value="light-gray-background" />
             <String fx:value="radius" />

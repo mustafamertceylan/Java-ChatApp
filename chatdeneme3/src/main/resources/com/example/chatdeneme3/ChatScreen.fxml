@@ -20,7 +20,7 @@
     <left>
         <HBox prefHeight="336.0" prefWidth="68.0" BorderPane.alignment="CENTER">
             <children>
-                <VBox alignment="CENTER" prefHeight="536.0" prefWidth="68.0" styleClass="dark-gray-background" stylesheets="@style.css">
+                <VBox alignment="CENTER" prefHeight="536.0" prefWidth="68.0" styleClass="dark-gray-background" stylesheets="@../../../style.css">
                     <children>
                         <Pane prefHeight="242.0" prefWidth="50.0" />
                         <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="31.0" styleClass="transparent-background">
@@ -65,7 +65,7 @@
     <center>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <VBox prefHeight="536.0" prefWidth="282.0" styleClass="gray-background" stylesheets="@style.css">
+                <VBox prefHeight="536.0" prefWidth="282.0" styleClass="gray-background" stylesheets="@../../../style.css">
                     <children>
                         <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="202.0">
                             <children>
@@ -199,8 +199,8 @@
                     <children>
                         <HBox prefHeight="100.0" prefWidth="389.0">
                             <children>
-                                <Pane minWidth="-Infinity" prefHeight="96.0" prefWidth="1.0" styleClass="dark-gray-background" stylesheets="@style.css" />
-                                <VBox alignment="CENTER" prefHeight="79.0" prefWidth="468.0" styleClass="gray-background" stylesheets="@style.css">
+                                <Pane minWidth="-Infinity" prefHeight="96.0" prefWidth="1.0" styleClass="dark-gray-background" stylesheets="@../../../style.css" />
+                                <VBox alignment="CENTER" prefHeight="79.0" prefWidth="468.0" styleClass="gray-background" stylesheets="@../../../style.css">
                                     <children>
                                         <Label text="MarmaraChat " textFill="WHITE">
                                             <font>
@@ -218,15 +218,15 @@
                         </HBox>
                         <ScrollPane prefHeight="408.0" prefWidth="389.0">
                             <content>
-                                <TextArea fx:id="messageArea" prefHeight="464.0" prefWidth="386.0" styleClass="light-gray-background" stylesheets="@style.css" />
+                                <TextArea fx:id="messageArea" prefHeight="464.0" prefWidth="386.0" styleClass="light-gray-background" stylesheets="@../../../style.css" />
                             </content>
                             <VBox.margin>
                                 <Insets />
                             </VBox.margin>
                         </ScrollPane>
-                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="430.0" stylesheets="@style.css">
+                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="430.0">
                             <children>
-                                <TextField fx:id="messageField" prefHeight="26.0" prefWidth="367.0" promptText="Type your message here" styleClass="transparent-background" stylesheets="@style.css" />
+                                <TextField fx:id="messageField" prefHeight="26.0" prefWidth="367.0" promptText="Type your message here" styleClass="transparent-background" stylesheets="@../../../style.css" />
                                 <Button fx:id="sendButton" mnemonicParsing="false" onAction="#handleSendMessage" styleClass="gray-background">
                                     <graphic>
                                         <ImageView fitHeight="17.0" fitWidth="19.0" pickOnBounds="true">

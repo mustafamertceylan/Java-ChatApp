@@ -4,14 +4,17 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import javafx.scene.image.Image;
 import java.io.PrintWriter;
 
 public class ChatClientGUI extends Application {
+
     private Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
+
         showLoginScreen(); // Uygulama başlarken Login ekranını göster
     }
 
@@ -19,6 +22,10 @@ public class ChatClientGUI extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/chatdeneme3/LoginScreen.fxml"));
             Scene scene = new Scene(loader.load());
+
+            Image icon = new Image("Marmara_Üniversitesi_logo.png"); // uygulamaya icon ekliyoruz.
+            primaryStage.getIcons().add(icon);
+
             primaryStage.setScene(scene);
             primaryStage.setTitle("Giriş");
 
