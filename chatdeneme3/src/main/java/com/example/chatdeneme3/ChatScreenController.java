@@ -2,10 +2,14 @@ package com.example.chatdeneme3;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import com.example.chatdeneme3.RegisterUserController;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.*;
@@ -44,7 +48,8 @@ public class ChatScreenController {
         }
 
     }
-
+    @FXML
+    private Button exit;
 
     @FXML
     private TextArea messageArea; // Mesajların görüntülendiği alan
@@ -74,22 +79,24 @@ public class ChatScreenController {
         }
 
     }
-
-//    @FXML
-//    private void setUsername() {
-////        String enteredUsername = RegisterUserController.userNickName.trim();
-////        if (!enteredUsername.isEmpty()) {
-////            out.println(enteredUsername);  // Kullanıcı adı sunucuya gönderiliyor
-////
-////            // Kullanıcı adı girildikten sonra diğer bileşenler aktif olacak
-//////            kullaniciAdiGiris.setDisable(true);
-//////            sendButton.setDisable(false);
-////            messageField.setDisable(false);
-////            messageField.setPromptText("Type a message...");  // Mesaj yazılabilir hale gelir
-////        } else {
-////            messageArea.appendText("Username cannot be empty.\n");
-////        }
-//    }
+    @FXML
+    private void handleShowUserInfo() {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserInfo.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Kullanıcı Bilgileri");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void handleExitButton(ActionEvent event) {
+        System.exit(0);
+    }
 
     private void setupConnection() {
         try {
@@ -123,4 +130,5 @@ public class ChatScreenController {
     public void setMainApp(ChatClientGUI mainApp) {
         this.mainApp = mainApp;
     }
+
 }

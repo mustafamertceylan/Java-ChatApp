@@ -35,7 +35,7 @@
                                 <Insets bottom="20.0" />
                             </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="transparent-background">
+                        <Button mnemonicParsing="false" onAction="#handleShowUserInfo" styleClass="transparent-background">
                             <graphic>
                                 <ImageView fitHeight="34.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -45,7 +45,7 @@
                             </graphic>
                         </Button>
                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                        <Button mnemonicParsing="false" styleClass="transparent-background">
+                        <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExitButton" styleClass="transparent-background">
                             <graphic>
                                 <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
