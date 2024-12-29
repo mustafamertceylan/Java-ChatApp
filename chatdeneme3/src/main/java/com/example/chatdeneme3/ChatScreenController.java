@@ -8,79 +8,73 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
-import com.example.chatdeneme3.RegisterUserController;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.*;
 
 public class ChatScreenController {
-
-    private ChatClientGUI mainApp; // Ana uygulama referansı
-
+    private ChatClientGUI mainApp;
+    // Ana uygulama referansını tutar. `ChatClientGUI` ile ilişkilendirilir.
     @FXML
     private Button StatusOnline;
-    private  Boolean isOnline=true;
-    int isOnlineCount=1;
-    @FXML
-    private void handleStatusOnlineButton(){
-        if(isOnline){
-            if(isOnlineCount==1){
+    // Kullanıcının çevrim içi/çevrim dışı durumunu değiştiren buton.
+    private Boolean isOnline = true;
+    // Kullanıcının çevrim içi mi yoksa çevrim dışı mı olduğunu izler.
+    int isOnlineCount = 1;
+    @FXML//Kullanıcının butona basması ile aktiflik durumunu değiştiren buton kodu
+    private void handleStatusOnlineButton() {
+        if (isOnline) {
+            if (isOnlineCount == 1) {
                 out.println(RegisterUserController.userNickName);
-                isOnlineCount+=1;
-            }
-            else{
+                isOnlineCount += 1;
+            } else {
                 out.println("CONNECTED");
             }
-            messageField.setDisable(false);
-            sendButton.setDisable(false);
-            messageField.setPromptText("Type a message...");  // Mesaj yazılabilir hale gelir
+            messageField.setDisable(false);// Mesaj giriş alanı aktif edilir.
+            sendButton.setDisable(false);// Gönder butonu aktif edilir.
+            messageField.setPromptText("Type a message...");// Kullanıcıya mesaj yazması gerektiğini belirten metin gösterilir.
             StatusOnline.setText("Çevrim içi");
             isOnline = false;
-        }
-        else{
+        } else {
             out.println("DISCONNECT");
-            messageField.setDisable(true);
+            messageField.setDisable(true);// Mesaj giriş alanı devre dışı bırakılır.
             messageField.setPromptText("Çevrim dışı oldun...");
-            StatusOnline.setText("Çevrim dışı");
-            isOnline=true;
-
+            StatusOnline.setText("Çevrim dışı");// Buton metni değiştirilir.
+            isOnline = true;
         }
-
     }
+
     @FXML
     private Button exit;
-
     @FXML
-    private TextArea messageArea; // Mesajların görüntülendiği alan
-
+    private TextArea messageArea;
     @FXML
-    private TextField messageField; // Mesaj girişi için alan
-
-
+    private TextField messageField;
     @FXML
-    private Button sendButton; // Mesaj gönderme butonu
-
-    private PrintWriter out;
-    private BufferedReader in;
-
+    private Button sendButton;
+    private PrintWriter out;// Mesajları sunucuya göndermek için kullanılan çıkış akışı
+    private BufferedReader in;// Sunucudan gelen mesajları okumak için kullanılan giriş akışı.
     @FXML
     private void initialize() {
-        setupConnection(); // Sunucu bağlantısını kur
-        messageField.setOnAction(event -> handleSendMessage());
+        setupConnection();// Sunucu ile bağlantı kurulmasını sağlar.
+        messageField.setOnAction(event -> handleSendMessage());// Enter tuşuna basıldığında mesaj göndermek için `handleSendMessage` çağrılır.
     }
 
     @FXML
     private void handleSendMessage() {
+        // Kullanıcının yazdığı mesajı sunucuya gönderir.
         String message = messageField.getText().trim();
         if (!message.isEmpty()) {
-            out.println(message); // Mesajı sunucuya gönder
-            messageField.clear(); // Giriş alanını temizle
+            // Mesaj boş değilse işleme alınır.
+            out.println(message);
+            messageField.clear();
         }
-
     }
+
     @FXML
     private void handleShowUserInfo() {
+        // Kullanıcı bilgilerini gösteren yeni bir pencere açar.
         try {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserInfo.fxml"));
@@ -93,25 +87,32 @@ public class ChatScreenController {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void handleExitButton(ActionEvent event) {
+        // Çıkış butonuna basıldığında çalışır.
         ((Stage) messageField.getScene().getWindow()).close();
+        // Mevcut pencereyi kapatır.
         mainApp.showLoginScreen();
+        // Giriş ekranını yeniden gösterir.
     }
 
     private void setupConnection() {
+        // Sunucu ile bağlantı kurar ve mesajları dinler.
         try {
-            Socket socket = new Socket("localhost", 12345); // Sunucuya bağlan
+            Socket socket = new Socket("localhost", 12345);
+            // Sunucuya bağlanmak için soket oluşturulur.
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-            sendButton.setDisable(true); // Bağlantı başarılıysa butonu aktif yap
-            messageField.setDisable(true);
-            // Gelen mesajları dinleyen bir thread başlat
+            sendButton.setDisable(true);// Gönder butonu başlangıçta devre dışıdır.
+            messageField.setDisable(true);// Mesaj giriş alanı başlangıçta devre dışıdır.
+            // Gelen mesajları dinleyen bir thread başlatılır.
             new Thread(() -> {
                 try {
                     String message;
                     while ((message = in.readLine()) != null) {
+                        // Mesaj geldikçe okur ve ekrana yazar.
                         appendMessage(message);
                     }
                 } catch (IOException e) {
@@ -121,15 +122,17 @@ public class ChatScreenController {
 
         } catch (IOException e) {
             appendMessage("Could not connect to server: " + e.getMessage());
+            // Bağlantı kurulamazsa hata mesajını gösterir.
         }
     }
 
     private void appendMessage(String message) {
-        messageArea.appendText(message + "\n"); // Mesajı ekranda göster
+        // Gelen mesajları mesaj alanına ekler ve imleci alt satıra atar
+        messageArea.appendText(message + "\n");
     }
 
     public void setMainApp(ChatClientGUI mainApp) {
+        // Ana uygulama referansını ayarlar.
         this.mainApp = mainApp;
     }
-
 }

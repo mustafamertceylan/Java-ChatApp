@@ -9,17 +9,18 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-
-
 public class LoginScreenController {
-    private ChatClientGUI mainApp; // Ana uygulama referansı
+    private ChatClientGUI mainApp;
+    // Ana uygulamayı temsil eden `ChatClientGUI` referansı.
+    // Bu referans, uygulamanın diğer ekranlarına geçişi sağlar.
+
     @FXML
     private TextField Username;
     @FXML
     private TextField UserPasword;
-
     @FXML
     private void handleRegisterUserButton() {
+        // "Kayıt Ol" butonuna tıklandığında çalışır. Yeni kullanıcı kaydı için ekran açar.
         try {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RegisterUser.fxml"));
@@ -33,15 +34,15 @@ public class LoginScreenController {
         }
     }
 
-
-
     @FXML
     private void handleLogin() {
-        User registeredUser=RegisterUserController.getRegisterUser();
+        // "Giriş Yap" butonuna tıklandığında çalışır.
+        User registeredUser = RegisterUserController.getRegisterUser();
+        // Kayıtlı kullanıcı bilgilerini alır.
         String usernamefield = Username.getText();
         String passwordfield = UserPasword.getText();
-
         if (registeredUser == null) {
+            // Eğer kayıtlı kullanıcı yoksa hata mesajı göster.
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hata");
             alert.setHeaderText(null);
@@ -51,13 +52,14 @@ public class LoginScreenController {
         }
 
         if (usernamefield.equals(registeredUser.getNickName()) && passwordfield.equals(registeredUser.getUserPassword())) {
+            // Kullanıcı adı ve şifre doğruysa:
             try {
-                mainApp.showChatScreen(); // Başarılı giriş sonrası Chat ekranına geç
+                mainApp.showChatScreen(); // Sohbet ekranına geçiş yap.
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            // Hatalı giriş mesajı
+            // Eğer giriş bilgileri hatalıysa:
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hatalı Giriş");
             alert.setHeaderText(null);
@@ -66,8 +68,9 @@ public class LoginScreenController {
         }
     }
 
-    // Ana uygulama referansını ayarlama
+    // Ana uygulama referansını ayarlayan yöntem.
     public void setMainApp(ChatClientGUI mainApp) {
         this.mainApp = mainApp;
     }
 }
+

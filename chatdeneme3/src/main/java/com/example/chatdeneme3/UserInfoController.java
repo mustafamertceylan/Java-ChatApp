@@ -7,35 +7,31 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ChatServer.ChatServer.ClientHandler;
+//Kullanıcı bilgilerinin gösterildiği FXML dosyasının controllerı
 public class UserInfoController {
-
-
     @FXML
     private TextField nickNameField;
-
     @FXML
     private TextField userNameField;
-
     @FXML
     private TextField userLastNameField;
-
     @FXML
     private TextField userPasswordField;
 
     private String nickName;
-    private String nickname1,nickname2;
+    private String nickname1;
     private String userName;
     private String userLastName;
     private String userPassword;
 
-    @FXML
+    @FXML//Oluşturulan user nesnesinden bilgiler alınır ve ekrandaki yerlerine yazdırılır
     private void initialize() {
         nickName = RegisterUserController.getRegisterUser().getNickName();
         userName = RegisterUserController.getRegisterUser().getUserName();
         userLastName = RegisterUserController.getRegisterUser().getUserLastName();
         userPassword = RegisterUserController.getRegisterUser().getUserPassword();
 
-        nickname1=nickName;
+        nickname1=nickName;//Kullanıcının kullanıcı ismini değiştirmesi durumunda ilk kullanıcı ismini saklar
 
         nickNameField.setText(nickName);
         userNameField.setText(userName);
@@ -43,9 +39,9 @@ public class UserInfoController {
         userPasswordField.setText(userPassword);
     }
 
-    @FXML
+    @FXML//Eğer kullanıcı bilgilerini değiştirirse yeni bilgileri user nesnesine kaydeder
     private void handleSaveInfo() {
-        // Kullanıcı bilgilerini kontrol et
+        // İlgili alanları silip boş bırakıması durumunda hata mesajı bastırır
         if (userNameField.getText().isEmpty() || userLastNameField.getText().isEmpty()
                 || nickNameField.getText().isEmpty() || userPasswordField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -69,7 +65,7 @@ public class UserInfoController {
         if (!oldNickname.equals(newNickname)) {
             boolean result = ChatServer.ClientHandler.updateUserName(oldNickname, newNickname);
 
-            if (!result) {
+            if (result) {
                 // Kullanıcı adı güncellenemedi
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Hata");
