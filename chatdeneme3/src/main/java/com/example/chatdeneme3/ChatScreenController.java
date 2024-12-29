@@ -95,7 +95,8 @@ public class ChatScreenController {
     }
     @FXML
     private void handleExitButton(ActionEvent event) {
-        System.exit(0);
+        ((Stage) messageField.getScene().getWindow()).close();
+        mainApp.showLoginScreen();
     }
 
     private void setupConnection() {

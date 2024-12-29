@@ -25,6 +25,10 @@ public class User extends Chat {
         return nickName;
     }
 
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     public void setUserName(String userName) {
         UserName = userName;
     }

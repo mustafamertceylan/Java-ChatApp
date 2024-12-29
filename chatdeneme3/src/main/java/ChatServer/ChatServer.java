@@ -27,7 +27,7 @@ public class ChatServer {
         }
     }
 
-    private static class ClientHandler extends Thread {
+    public static class ClientHandler extends Thread {
         private Socket socket;
         private PrintWriter out;
         private BufferedReader in;
@@ -107,6 +107,30 @@ public class ChatServer {
         }
 
         private void broadcastMessage(String message) {
+            synchronized (clientWriters) {
+                for (PrintWriter writer : clientWriters.values()) {
+                    writer.println(message);
+                }
+            }
+        }
+
+        public static boolean updateUserName(String oldUserName, String newUserName) {
+            synchronized (clientWriters) {
+                if (newUserName == null || newUserName.trim().isEmpty() || clientWriters.containsKey(newUserName)) {
+                    return false; // Geçersiz veya zaten kullanımda
+                }
+
+                PrintWriter writer = clientWriters.remove(oldUserName); // Eski kullanıcı adı kaldırılır
+                if (writer != null) {
+                    clientWriters.put(newUserName, writer); // Yeni kullanıcı adı eklenir
+                    broadcastGlobalMessage("Server: " + oldUserName + " kullanıcı adını " + newUserName + " olarak değiştirdi.");
+                    return true; // Güncelleme başarılı
+                }
+                return false; // Kullanıcı adı bulunamadı
+            }
+        }
+
+        private static void broadcastGlobalMessage(String message) {
             synchronized (clientWriters) {
                 for (PrintWriter writer : clientWriters.values()) {
                     writer.println(message);
