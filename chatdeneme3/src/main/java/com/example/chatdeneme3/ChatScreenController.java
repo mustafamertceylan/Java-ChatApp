@@ -66,8 +66,8 @@ public class ChatScreenController {
         // Kullanıcının yazdığı mesajı sunucuya gönderir.
         String message = messageField.getText().trim();
         if (!message.isEmpty()) {
-            // Mesaj boş değilse işleme alınır.
-            out.println(message);
+            String currentNickname = RegisterUserController.getRegisterUser().getNickName(); // Güncel kullanıcı adını al
+            out.println(currentNickname + ": " + message); // Mesajı güncel kullanıcı adıyla gönder
             messageField.clear();
         }
     }
@@ -125,11 +125,22 @@ public class ChatScreenController {
             // Bağlantı kurulamazsa hata mesajını gösterir.
         }
     }
-
     private void appendMessage(String message) {
-        // Gelen mesajları mesaj alanına ekler ve imleci alt satıra atar
+        // Gelen mesajları mesaj alanına ekler ve her mesaj güncellenen kullanıcı adı ile gösterilir
+        if (message.startsWith("Server:")) {
+            // Eğer server mesajı bir kullanıcı adı değişikliği içeriyorsa kontrol et
+            if (message.contains("kullanıcı adını")) {
+                String[] parts = message.split(" ");
+                if (parts.length > 5) {
+                    String oldNick = parts[2];
+                    String newNick = parts[5];
+                    message = message.replace(oldNick, newNick); // Mesajı yeni kullanıcı adına göre güncelle
+                }
+            }
+        }
         messageArea.appendText(message + "\n");
     }
+
 
     public void setMainApp(ChatClientGUI mainApp) {
         // Ana uygulama referansını ayarlar.

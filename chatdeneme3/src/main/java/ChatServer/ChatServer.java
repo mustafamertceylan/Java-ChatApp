@@ -42,6 +42,9 @@ public class ChatServer {
         public void run() {
             try {
                 // Veri alışverişi için kullanılacak veri giriş çıkışlarının ayarlanması
+
+
+
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
 
@@ -87,7 +90,7 @@ public class ChatServer {
                         }
                     } else {
                         // Tüm kullanıcılara mesaj gönderilir
-                        broadcastMessage(userName + ": " + message);
+                        broadcastMessage(message);
                     }
                 }
             } catch (IOException e) {
@@ -118,7 +121,6 @@ public class ChatServer {
             }
         }
 
-        // Kullanıcı adı güncelleme işlemini yapan metot
         public static boolean updateUserName(String oldUserName, String newUserName) {
             synchronized (clientWriters) {
                 if (newUserName == null || newUserName.trim().isEmpty() || clientWriters.containsKey(newUserName)) {
@@ -134,6 +136,7 @@ public class ChatServer {
                 return false; // Kullanıcı adı bulunamadı
             }
         }
+
 
         // Tüm kullanıcılara sunucu mesajı gönderen yöntem
         private static void broadcastGlobalMessage(String message) {

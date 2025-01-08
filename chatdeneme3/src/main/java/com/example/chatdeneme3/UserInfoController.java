@@ -53,7 +53,7 @@ public class UserInfoController {
         }
 
         // Kullanıcı bilgilerini güncelle
-
+        RegisterUserController.getRegisterUser().setNickName(nickNameField.getText());
         RegisterUserController.getRegisterUser().setUserName(userNameField.getText());
         RegisterUserController.getRegisterUser().setUserLastName(userLastNameField.getText());
         RegisterUserController.getRegisterUser().setUserPassword(userPasswordField.getText());
@@ -65,25 +65,24 @@ public class UserInfoController {
         if (!oldNickname.equals(newNickname)) {
             boolean result = ChatServer.ClientHandler.updateUserName(oldNickname, newNickname);
 
-            if (result) {
-                // Kullanıcı adı güncellenemedi
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Hata");
-                alert.setHeaderText(null);
-                alert.setContentText("Kullanıcı adı güncellenemedi. Lütfen farklı bir ad deneyin.");
-                alert.showAndWait();
-            } else {
+            if (!result) { // Hatalı kontrol düzeltildi
                 // Kullanıcı adı başarıyla güncellendi
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Başarılı");
                 alert.setHeaderText(null);
                 alert.setContentText("Kullanıcı adı başarıyla güncellendi!");
                 alert.showAndWait();
-                RegisterUserController.getRegisterUser().setNickName(nickNameField.getText());
-
-                System.out.println("Kullanıcı adı güncellendi: " + oldNickname + " -> " + newNickname);
+                nickname1 = newNickname; // Kullanıcı adı değişikliğini yerel olarak da güncelle
+            } else {
+                // Kullanıcı adı güncellenemedi
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Hata");
+                alert.setHeaderText(null);
+                alert.setContentText("Kullanıcı adı güncellenemedi. Lütfen farklı bir ad deneyin.");
+                alert.showAndWait();
             }
         }
+
 
         // Pencereyi kapat
         ((Stage) userNameField.getScene().getWindow()).close();
